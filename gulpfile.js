@@ -14,6 +14,7 @@ var gulp = require('gulp')
      srcFolder: config.srcFolder,
      buildFolder: config.buildFolder,
      loaderType: 'amd', //requirejs default === cmd
+     disableMagixUpdater:true,
      excludeTmplFolders: [
          './tmpl/vendor/' //not add define
      ]
