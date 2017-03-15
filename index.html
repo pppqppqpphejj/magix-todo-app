@@ -8,6 +8,9 @@
         <script type="text/javascript" src="https://unpkg.com/requirejs@2.3.3/require.js"></script>
     </head>
     <body>
+
+        <div id="magix_root"></div>
+
         <script type="text/javascript">
             var pathBase = './src/'
             require.config({
@@ -27,8 +30,29 @@
              })
 
             require(['jquery', 'magix'],function($, Magix){
-                console.log('jquery', $)
-                console.log('magix' , Magix)
+
+
+                Magix.boot({
+                    defaultView: 'app/view/default',       // Magix启动渲染的默认视图
+                    defaultPath: '/todo/list',              // hash没有指定path时的默认路由
+
+                    rootId: 'magix_root',   // magix模块渲染DOM的容器ID, 默认为body元素
+
+                    /**
+                     * 程序中一些出错会影响整个应用的运行和稳定，
+                     * 这种情况在单页应用中最为致命，所以Magix对执行流程上的方法使用try catch调用，
+                     * 避免某个方法出错后导致后续代码不能继续运行。
+                     * 当出错时，Magix会调用配置中的error方法，您可以在这里抛出错误(开发阶段)或收集错误并上报(部署上线阶段)
+                     **/
+                    error: function(e) {
+                        // 这里我们先简单的抛出错误，部署上线的时候建议使用如
+                        // new Image().src='//xx.yy/jserror?desc='+e.description收集错误哦～
+                        throw e
+                    }
+                })
+
+
+
             })
 
         </script>
