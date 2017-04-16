@@ -17,6 +17,8 @@
                 paths:{
                     jquery:'https://unpkg.com/jquery@3.1.1/dist/jquery',
                     magix:'https://unpkg.com/magix@3.2.0/dist/amd/magix-debug',
+                    underscore: 'https://cdn.bootcss.com/underscore.js/1.8.3/underscore',
+                    vue: 'https://cdn.bootcss.com/vue/1.0.26/vue',
                     //注意我们使用的是dist中的amd
                     app: pathBase + 'app'
                 }
@@ -37,6 +39,10 @@
                     defaultPath: '/todo/list',              // hash没有指定path时的默认路由
 
                     rootId: 'magix_root',   // magix模块渲染DOM的容器ID, 默认为body元素
+
+                    // Magix启动前加载这里的资源
+                    exts: ['app/magix-view-extension'],
+
 
                     /**
                      * 程序中一些出错会影响整个应用的运行和稳定，

@@ -3,9 +3,12 @@ var Magix = require('magix')
 var $ = require('jquery')
 
 module.exports = Magix.View.extend({
-    tmpl: "<div><h2>新建Todo</h2><form mx-submit=\"\u001f\u001esaveTodo()\"><div class=\"form-group\"><label>Name:</label><input type=\"text\" class=\"form-control\" name=\"name\"></div><div class=\"form-group\"><button type=\"submit\" class=\"btn btn-default\">提交</button></div></form></div>",
+    tmpl: "<div><h2>新建Todo</h2><form mx-submit=\"\u001f\u001esaveTodo()\"><div class=\"form-group\"><label>Name:</label><input type=\"text\" class=\"form-control\" name=\"name\" value=\"<%= name %>\"></div><div class=\"form-group\"><button type=\"submit\" class=\"btn btn-default\">提交</button></div></form></div>",
     render: function() {
-        this.setHTML(this.id, this.tmpl)
+      var todo = {
+        name: 'magix'
+        }
+      this.setViewHTML(todo)
     },
 
     /**
