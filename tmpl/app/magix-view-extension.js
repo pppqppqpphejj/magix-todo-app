@@ -23,14 +23,14 @@ Magix.View.merge({
     setVueHTML: function (data) {
         var deferred = $.Deferred()
         var that = this
-
+        that.beginUpdate();
         this.vm = new Vue({
 
             //  设置view容器元素为vue.js模板渲染容器元素
             el: document.getElementById(this.id),
 
             //  设置视图的tmpl字段为vue.js模板, 打包工具读取模板嵌入
-            template: this.tmpl,
+            template: this.wrapEvent(this.tmpl),
 
             // vue.js参数: 模板插入容器而不是替换容器元素
             replace: false,
