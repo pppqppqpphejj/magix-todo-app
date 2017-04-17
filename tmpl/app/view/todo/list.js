@@ -24,7 +24,6 @@ module.exports = Magix.View.extend({
                 return todo.name.search(that.data.keyword) != -1
             })
 
-            // that.setViewHTML(that.data)
             that.setVueHTML(that.data)
         })
     },

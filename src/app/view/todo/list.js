@@ -3,7 +3,7 @@ var Magix = require('magix')
 var $ = require('jquery')
 
 module.exports = Magix.View.extend({
-    tmpl: "<div><form class=\"form-inline\" mx-submit=\"\u001f\u001esearch()\"><div class=\"form-group\"><label>关键字:</label><input type=\"text\" class=\"form-control\" v-model=\"keyword\"></div><button class=\"btn btn-default\" type=\"submit\">搜索</button></form><table class=\"table table-striped\"><thead><tr><th>ID</th><th>名称</th><th>操作</th></tr></thead><tbody><tr v-for=\"todo in todos\"><td>{{todo.id}}</td><td>{{todo.name}}</td><td><div mx-view=\"app/view/todo/add\"></div><a href=\"javascript:;\" class=\"mr10\" mx-click=\"\u001f\u001edeleteItem({id: {{todo.id}}})\">删除</a></td></tr></tbody></table></div>",
+    tmpl: "<div><form class=\"form-inline\" mx-submit=\"\u001f\u001esearch()\"><div class=\"form-group\"><label>关键字:</label><input type=\"text\" class=\"form-control\" v-model=\"keyword\"></div><button class=\"btn btn-default\" type=\"submit\">搜索</button></form><table class=\"table table-striped\"><thead><tr><th>ID</th><th>名称</th><th>操作</th></tr></thead><tbody><tr v-for=\"todo in todos\"><td>{{todo.id}}</td><td>{{todo.name}}</td><td><a href=\"javascript:;\" class=\"mr10\" mx-click=\"\u001f\u001edeleteItem({id: {{todo.id}}})\">删除</a></td></tr></tbody></table></div>",
     init: function () {
         this.observe('keyword')
     },
@@ -25,7 +25,6 @@ module.exports = Magix.View.extend({
                 return todo.name.search(that.data.keyword) != -1
             })
 
-            // that.setViewHTML(that.data)
             that.setVueHTML(that.data)
         })
     },
