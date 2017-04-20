@@ -14,6 +14,7 @@ var gulp = require('gulp')
      srcFolder: config.srcFolder,
      buildFolder: config.buildFolder,
      loaderType: 'amd', //requirejs default === cmd
+     disableMagixUpdater:true,
      excludeTmplFolders: [
          './tmpl/vendor/' //not add define
      ]
@@ -52,12 +53,6 @@ var gulp = require('gulp')
              }
          }))
          .pipe(gulp.dest(config.buildFolder))
-
-     gulp.src(config.srcFolder + '/**/*.css')
-         .pipe($.cssnano({
-             safe: true
-         }))
-         .pipe(gulp.dest(config.buildFolder))
  })
 
 
@@ -69,8 +64,6 @@ var gulp = require('gulp')
              port: config.port
          }))
  })
-
-
 
  gulp.task('dev', function(callback) {
      runSequence(

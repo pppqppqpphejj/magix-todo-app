@@ -1,0 +1,1 @@
+define("app/view/common/footer",["require","module","exports","magix"],function(e,t,i){var o=e("magix");t.exports=o.View.extend({tmpl:"<header><h2>footer</h2></header>",render:function(){this.setHTML(this.id,this.tmpl)}})});
